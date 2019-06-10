@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Devture\Bundle\WebCommandBundle\:
+    resource: '../../*'
+    exclude: '../../{Entity,Model,Migrations,Tests}'
+
+  Devture\Bundle\WebCommandBundle\Controller\:
+    resource: '../../Controller'
+    tags: ['controller.service_arguments']
+
+  Devture\Bundle\WebCommandBundle\Controller\CommandController:
+    arguments:
+      $authToken: '%devture_web_command_config.auth_token%'

@@ -1,0 +1,23 @@
+{
+	"name": "devture/symfony-web-command-bundle",
+	"type": "symfony-bundle",
+	"description": "Symfony bundle that allows console commands to be called from the web in a secure manner",
+	"keywords": ["symfony", "bundle", "console", "command", "cron"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Slavi Pantaleev",
+			"email": "slavi@devture.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"symfony/framework-bundle": "^4.0",
+		"symfony/console": "^4.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Devture\\Bundle\\WebCommandBundle\\": ""
+		}
+	}
+}
