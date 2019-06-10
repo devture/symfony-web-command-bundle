@@ -12,7 +12,7 @@ It can let you convert cronjobs from something like this:
 to:
 
 ```
-* * * * * user curl -H 'Authorization: Bearer SECRET' http://application/web-command/execute/ticket:purge
+* * * * * user curl -XPOST -H 'Authorization: Bearer SECRET' http://application/web-command/execute/ticket:purge
 ```
 
 
@@ -61,16 +61,18 @@ The basic call would be something like this (using [cURL](https://curl.haxx.se/)
 
 ```
 curl \
+-XPOST \
 -H 'Authorization: Bearer SECRET' \
 http://application/web-command/execute/commandName
 ```
 
-You can POST a JSON payload to this URL endpoint to configure it. Example:
+You can `POST` a JSON payload to this URL endpoint to configure it. Example:
 
 ```
 # outputVerbosity = 256 means "debug". See the `OutputInterface:VERBOSITY_` constants.
 
 curl \
+-XPOST \
 -H 'Authorization: Bearer SECRET' \
 --data '{"input": {"days": 10, "--something": 4}, "outputVerbosity": 256}' \
 http://application/web-command/execute/ticket:purge
