@@ -52,9 +52,12 @@ class CommandController extends AbstractController {
 		}
 
 		$commandInput = (array_key_exists('input', $payload) ? (array) $payload['input']: []);
-		$input = new ArrayInput(array_merge($commandInput, [
+
+		// Ordering of the array elements is important.
+		// Whichever element ends up being the first in the list is the one that is the command name.
+		$input = new ArrayInput(array_merge([
 			'command' => $name,
-		]));
+		], $commandInput));
 
 		$outputVerbosity = (array_key_exists('outputVerbosity', $payload) ? (int) $payload['outputVerbosity']: OutputInterface::VERBOSITY_NORMAL);
 
