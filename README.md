@@ -51,6 +51,24 @@ DevtureWebCommandBundleWebsite:
 ```
 
 
+## Security
+
+If using Symfony's Security component to [Secure URL patterns](https://symfony.com/doc/current/security.html#securing-url-patterns-access-control), you may wish to adjust the firewall to not block `/web-command` requests.
+
+Modify: `config/packages/security.yaml`:
+
+```yaml
+security:
+  # Other stuff..
+
+  access_control:
+    # Other stuff..
+    - { path: ^/web-command/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    # Other stuff..
+    - { path: ^/, role: ROLE_USER }
+```
+
+
 # Usage
 
 Execute commands from the web by making a `POST` request to the `/web-command/execute/:commandName` route.
