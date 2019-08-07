@@ -34,10 +34,13 @@ Drop the following routing config in `config/packages/devture_web_command.yaml`
 ```yaml
 devture_web_command:
   auth_token: '%env(DEVTURE_WEB_COMMAND_AUTH_TOKEN)%'
+  forced_uri: '%env(DEVTURE_WEB_COMMAND_FORCED_URI)%'
 ```
 
-You then need to define an environment variable `DEVTURE_WEB_COMMAND_AUTH_TOKEN`, which would contain your authentication secret.
+The environment variable `DEVTURE_WEB_COMMAND_AUTH_TOKEN` would contain your authentication secret.
 Make it a strong one (e.g. by using `pwgen -Bsv1 64`).
+
+The environment variable `DEVTURE_WEB_COMMAND_FORCED_URI` contains the external URL to your application, so that "console commands" invoked locally (`curl http://localhost/web-command/...`) would still generate the correct full URLs. Example value: `https://example.com`. It can also be left blank (empty string) to avoid force-setting and rely on auto-detection.
 
 
 ## Routing

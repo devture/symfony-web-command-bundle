@@ -14,6 +14,7 @@ class Configuration implements ConfigurationInterface {
 		$rootNode
 			->children()
 				->scalarNode('auth_token')->end()
+				->scalarNode('forced_uri')->end()
 			->end()
 		;
 

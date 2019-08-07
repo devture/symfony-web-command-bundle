@@ -15,3 +15,7 @@ services:
   Devture\Bundle\WebCommandBundle\Controller\CommandController:
     arguments:
       $authToken: '%devture_web_command_config.auth_token%'
+
+  Devture\Bundle\WebCommandBundle\Event\Subscriber\RequestContextForcerSubscriber:
+    arguments:
+      $forcedUri: '%devture_web_command_config.forced_uri%'
