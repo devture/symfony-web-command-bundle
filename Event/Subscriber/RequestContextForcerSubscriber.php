@@ -2,7 +2,7 @@
 namespace Devture\Bundle\WebCommandBundle\Event\Subscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\RequestContext;
 
@@ -33,7 +33,7 @@ class RequestContextForcerSubscriber implements EventSubscriberInterface {
 		$this->requestContext = $requestContext;
 	}
 
-	public function onKernelRequest(GetResponseEvent $event) {
+	public function onKernelRequest(RequestEvent $event) {
 		if ($this->forcedUri === '') {
 			return;
 		}
