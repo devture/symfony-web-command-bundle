@@ -18,7 +18,7 @@ to:
 
 # Installation
 
-Install through composer (`composer require --dev devture/symfony-web-command-bundle`).
+Install through composer (`composer require devture/symfony-web-command-bundle:dev-master`).
 
 Add to `config/bundles.php`:
 
