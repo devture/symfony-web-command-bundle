@@ -6,7 +6,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface {
 
-	public function getConfigTreeBuilder() {
+	public function getConfigTreeBuilder(): TreeBuilder {
 		$treeBuilder = new TreeBuilder('devture_web_command');
 
 		$rootNode = $treeBuilder->getRootNode();

@@ -18,22 +18,13 @@ use Symfony\Component\Routing\RequestContext;
  */
 class RequestContextForcerSubscriber implements EventSubscriberInterface {
 
-	/**
-	 * @var string
-	 */
-	private $forcedUri;
-
-	/**
-	 * @var RequestContext
-	 */
-	private $requestContext;
-
-	public function __construct(string $forcedUri, RequestContext $requestContext) {
-		$this->forcedUri = $forcedUri;
-		$this->requestContext = $requestContext;
+	public function __construct(
+		private string $forcedUri,
+		private RequestContext $requestContext,
+	) {
 	}
 
-	public function onKernelRequest(RequestEvent $event) {
+	public function onKernelRequest(RequestEvent $event): void {
 		if ($this->forcedUri === '') {
 			return;
 		}
@@ -80,7 +71,7 @@ class RequestContextForcerSubscriber implements EventSubscriberInterface {
 		}
 	}
 
-	static public function getSubscribedEvents() {
+	static public function getSubscribedEvents(): array {
 		return [
 			// `Symfony\Component\HttpKernel\EventListener\RouterListener`,
 			// automatically populates the request context from the request (`$this->context->fromRequest($request)`).
