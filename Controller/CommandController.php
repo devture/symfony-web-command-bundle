@@ -13,15 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 class CommandController extends AbstractController {
 
-	private $authToken;
-
-	public function __construct(string $authToken) {
-		$this->authToken = $authToken;
+	public function __construct(private string $authToken) {
 	}
 
-	/**
-	 * @Route("/execute/{name}", name="devture_web_command.command.execute", methods={"POST"})
-	 */
+	#[Route('/execute/{name}', name: 'devture_web_command.command.execute', methods: ['POST'])]
 	public function execute(
 		Request $request,
 		string $name,
