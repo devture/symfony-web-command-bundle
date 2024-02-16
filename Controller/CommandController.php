@@ -58,6 +58,11 @@ class CommandController extends AbstractController {
 
 		$application = new Application($kernel);
 		$application->setAutoExit(false);
+		// We don't wish for exceptions/errors to be handled there and print a stacktrace without erroring out.
+		// See: https://github.com/devture/symfony-web-command-bundle/issues/2
+		// We'd like these to propagate here, so Symfony can handle them like any other exception/error.
+		$application->setCatchExceptions(false);
+		$application->setCatchErrors(false);
 
 		$output = new BufferedOutput($outputVerbosity);
 		$application->run($input, $output);
